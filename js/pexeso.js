@@ -23,7 +23,7 @@ class Tile {
     generateImage() {
         let image = document.createElement('div');
         image.className = 'image';
-        let random = randomImage();
+        let random = this.randomImage();
         this.imageUrl = random;
         if (random)
             image.style.backgroundImage = `url(${random})`;
@@ -68,6 +68,19 @@ class Tile {
             }
         }
     }
+    // Recursive helper function
+    randomImage() {
+        let random = Math.floor(Math.random() * 8) + 1;
+        let imagePath = `img/cars${random}.jpg`;
+        let filteredArray = Tile.imagesUsed.filter(el => el === imagePath);
+        if (filteredArray.length < 2) {
+            Tile.imagesUsed.push(imagePath);
+            return imagePath;
+        }
+        else {
+            return this.randomImage();
+        }
+    }
 }
 // array of all images in the grid
 Tile.imagesUsed = [];
@@ -75,19 +88,6 @@ Tile.imagesUsed = [];
 Tile.challenge = [];
 // store parent ids of images element
 Tile.uncovered = [];
-// Recursive helper function
-function randomImage() {
-    let random = Math.floor(Math.random() * 8) + 1;
-    let imagePath = `img/cars${random}.jpg`;
-    let filteredArray = Tile.imagesUsed.filter(el => el === imagePath);
-    if (filteredArray.length < 2) {
-        Tile.imagesUsed.push(imagePath);
-        return imagePath;
-    }
-    else {
-        return randomImage();
-    }
-}
 // Generate gridtiles
 for (let i = 1; i <= Math.pow(grid, 2); i++) {
     let tile = new Tile(i);

@@ -28,26 +28,26 @@ class Tile {
   }
 
   // array of all images in the grid
-  static imagesUsed: Array<string> = [];
+  private static imagesUsed: Array<string> = [];
 
   // store previously click image
-  static challenge: Array<[HTMLDivElement, string, string]> = [];
+  private static challenge: Array<[HTMLDivElement, string, string]> = [];
 
   // store parent ids of images element
-  static uncovered: Array<string> = [];
+  private static uncovered: Array<string> = [];
 
   /* Generate an image for the tile */
-  generateImage(): HTMLDivElement {
+  private generateImage(): HTMLDivElement {
     let image: HTMLDivElement = document.createElement('div');
     image.className = 'image';
-    let random: string = randomImage();
+    let random: string = this.randomImage();
     this.imageUrl = random;
     if (random) image.style.backgroundImage = `url(${random})`;
     return image;
   }
 
   /* Generate event listener */
-  addListener(element: HTMLDivElement): void {
+  private addListener(element: HTMLDivElement): void {
     element.addEventListener('click', listener);
     const self = this;
 
@@ -57,7 +57,7 @@ class Tile {
 
       if (parent) {
         if (Tile.challenge.length === 0) {
-          Tile.challenge.push([(<HTMLDivElement>e.target), parent.id, self.imageUrl]);
+          Tile.challenge.push([<HTMLDivElement>e.target, parent.id, self.imageUrl]);
           Tile.uncovered.push(parent.id);
         } else {
           if (Tile.challenge[0][1] !== parent.id) {
@@ -85,18 +85,18 @@ class Tile {
       }
     }
   }
-}
 
-// Recursive helper function
-function randomImage(): string {
-  let random = Math.floor(Math.random() * 8) + 1;
-  let imagePath = `img/cars${random}.jpg`;
-  let filteredArray = Tile.imagesUsed.filter(el => el === imagePath);
-  if (filteredArray.length < 2) {
-    Tile.imagesUsed.push(imagePath);
-    return imagePath;
-  } else {
-    return randomImage();
+  // Recursive helper function
+  private randomImage(): string {
+    let random = Math.floor(Math.random() * 8) + 1;
+    let imagePath = `img/cars${random}.jpg`;
+    let filteredArray = Tile.imagesUsed.filter(el => el === imagePath);
+    if (filteredArray.length < 2) {
+      Tile.imagesUsed.push(imagePath);
+      return imagePath;
+    } else {
+      return this.randomImage();
+    }
   }
 }
 
