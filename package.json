@@ -1,0 +1,15 @@
+{
+  "name": "pexeso",
+  "version": "0.0.1",
+  "description": "Pexeso",
+  "main": "js/pexeso.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "pexeso",
+    "game"
+  ],
+  "author": "Bryan Veer",
+  "license": "ISC"
+}
