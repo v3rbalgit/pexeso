@@ -11,5 +11,8 @@
     "game"
   ],
   "author": "Bryan Veer",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "unsplash-js": "^5.0.0"
+  }
 }
