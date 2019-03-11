@@ -64,6 +64,7 @@ class Tile {
     const difficulty = <HTMLSelectElement>document.getElementById('difficulty');
     const topic = <HTMLInputElement>document.getElementById('topic');
     const start = <HTMLInputElement>document.getElementById('start');
+    const loader = <HTMLDivElement>document.querySelector('.loader');
 
     intro.style.display = 'block';
 
@@ -71,6 +72,7 @@ class Tile {
       e.preventDefault();
       let gridsize: number = +difficulty.value;
       let searchTerm: string = topic.value;
+      loader.style.display = 'block';
 
       // Initialize gridtiles
       Tile.loadImages(gridsize, searchTerm)
@@ -81,7 +83,9 @@ class Tile {
             tile.element.style.flexBasis = `${Math.floor(100 / gridsize)}%`;
             Tile.tiles[i - 1] = tile;
           }
+          cover.style.zIndex = '-1';
           cover.style.opacity = '0';
+          loader.style.display = 'none';
           Tile.timer = Date.now();
         })
         .catch(err => console.error(err));
@@ -99,7 +103,8 @@ class Tile {
     const playAgain = <HTMLInputElement>document.getElementById('playAgain');
 
     outro.style.display = 'block';
-    cover.style.opacity = '0.3';
+    cover.style.zIndex = '1';
+    cover.style.opacity = '0.4';
 
     let timeArray: number[] = (function(elapsed: number): number[] {
       let ms = elapsed % 1000;

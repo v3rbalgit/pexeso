@@ -100,11 +100,12 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  opacity: 0.3;
+  opacity: 0.4;
   background-color: black;
   width: 100%;
   height: 100%;
   transition: all 250ms;
+  z-index: 1;
 }
 
 #intro, #outro {
@@ -123,7 +124,7 @@ body {
   color: black;
   text-align: center;
   padding: 2rem;
-  z-index: 1;
+  z-index: 2;
   border-radius: 5px;
 }
 .message h3, .message h1 {
@@ -141,7 +142,7 @@ body {
   width: 120px;
 }
 .message #start, .message #playAgain {
-  display: block;
+  display: inline-block;
   margin: 0 auto;
   margin-top: 2rem;
   padding: 0.5rem 2rem;
@@ -151,9 +152,26 @@ body {
   border-radius: 5px;
   font-weight: bold;
   font-size: 1.1rem;
+  vertical-align: middle;
 }
 .message #start:hover, .message #playAgain:hover {
   cursor: pointer;
   color: rgb(94, 92, 100);
   background-color: rgb(202, 210, 218);
+}
+
+.loader {
+  display: none;
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  margin-left: auto;
+  margin-right: auto;
+  top: 50%;
+  left: 0;
+  right: 0;
+}
+.loader img {
+  width: 100%;
+  height: 100%;
 }

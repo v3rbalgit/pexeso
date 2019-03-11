@@ -92,11 +92,13 @@ var Tile = /** @class */ (function () {
         var difficulty = document.getElementById('difficulty');
         var topic = document.getElementById('topic');
         var start = document.getElementById('start');
+        var loader = document.querySelector('.loader');
         intro.style.display = 'block';
         start.addEventListener('click', function (e) {
             e.preventDefault();
             var gridsize = +difficulty.value;
             var searchTerm = topic.value;
+            loader.style.display = 'block';
             // Initialize gridtiles
             Tile.loadImages(gridsize, searchTerm)
                 .then(function () {
@@ -106,7 +108,9 @@ var Tile = /** @class */ (function () {
                     tile.element.style.flexBasis = Math.floor(100 / gridsize) + "%";
                     Tile.tiles[i - 1] = tile;
                 }
+                cover.style.zIndex = '-1';
                 cover.style.opacity = '0';
+                loader.style.display = 'none';
                 Tile.timer = Date.now();
             })
                 .catch(function (err) { return console.error(err); });
@@ -121,7 +125,8 @@ var Tile = /** @class */ (function () {
         var time = document.getElementById('time');
         var playAgain = document.getElementById('playAgain');
         outro.style.display = 'block';
-        cover.style.opacity = '0.3';
+        cover.style.zIndex = '1';
+        cover.style.opacity = '0.4';
         var timeArray = (function (elapsed) {
             var ms = elapsed % 1000;
             var sec = Math.floor(elapsed / 1000) % 60;
