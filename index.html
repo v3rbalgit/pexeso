@@ -5,10 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="css/style.css" />
-    <script src="lib/unsplash.min.js"></script>
     <title>Pexeso</title>
   </head>
   <body>
+    <div class="cover"></div>
+    <div class="message" id="intro">
+      <h3>Welcome to Pexeso!</h3>
+      <p>Choose your difficulty and picture theme:</p>
+      <label for="difficulty">
+        <select name="difficulty" id="difficulty">
+          <option value="4" selected>Normal</option>
+          <option value="6">Hard</option>
+          <option value="8">Extreme</option>
+        </select>
+      </label>
+      <label for="topic">
+        <input type="text" name="topic" id="topic"/>
+      </label>
+      <input type="submit" value="Start" id="start">
+    </div>
+
+    <div class="message" id="outro">
+      <h3>Congratulations!</h3>
+      <p>Your time was:</p>
+      <h1><span id="time"></span> <span class="normal">minutes</span></h1>
+      <input type="submit" value="Play again" id="playAgain">
+    </div>
+
     <div class="container">
       <h1>Pexeso</h1>
       <section id="pexeso"></section>

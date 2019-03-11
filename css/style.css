@@ -1,18 +1,17 @@
-/* @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700'); */
-/* @import url('https://fonts.googleapis.com/css?family=Cousine:400,700'); */
-@import url('https://fonts.googleapis.com/css?family=Gloria+Hallelujah');
+@import url('https://fonts.googleapis.com/css?family=Quicksand:400,700');
+
+* {
+  margin: 0;
+  padding: 0;
+}
 
 html,
 body {
-  margin: 0;
-  padding: 0;
   width: 100%;
   height: 100vh;
   background: linear-gradient(rgb(199, 199, 231), rgb(221, 247, 224));
-  color: #585699;
-  /* font-family: 'Open Sans', sans-serif; */
-  /* font-family: 'Cousine', monospace; */
-  font-family: 'Gloria Hallelujah', cursive;
+  color: #d67558;
+  font-family: 'Quicksand', cursive;
   font-size: 1em;
   line-height: 1.2;
 }
@@ -23,11 +22,11 @@ body {
   padding: 1rem;
 }
 .container > h1 {
-  padding: 0;
+  padding: 1rem 0;
   text-align: center;
   font-weight: bold;
   font-size: 4rem;
-  text-shadow: 1px 1px 3px rgb(156, 156, 156);
+  text-shadow: 0px 0px 2px #585699;
   text-transform: uppercase;
   letter-spacing: 1rem;
 }
@@ -56,6 +55,7 @@ body {
 } */
 
 #pexeso {
+  padding-top: 1rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -64,11 +64,9 @@ body {
 .tile {
   box-sizing: border-box;
   background-color: rgba(0, 0, 0, 0.25);
-  /* border: 1px solid rgb(73, 68, 90); */
-  box-shadow: 0 0 0 1px rgb(90, 76, 145);
+  border: 1px solid rgb(73, 68, 90);
   overflow: hidden;
   position: relative;
-  flex-basis: 25%;
   transition: all 150ms;
 }
 .tile:after {
@@ -93,7 +91,69 @@ body {
   top: 0;
   width: 100%;
   height: 100%;
-  background-size:cover;
+  background-size: cover;
   background-position: 50%;
-  transition: opacity 250ms;
+  transition: opacity 150ms;
+}
+
+.cover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0.3;
+  background-color: black;
+  width: 100%;
+  height: 100%;
+  transition: all 250ms;
+}
+
+#intro, #outro {
+  display: none;
+}
+
+.message {
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  top: 15vw;
+  right: 0;
+  width: 400px;
+  background: wheat;
+  color: black;
+  text-align: center;
+  padding: 2rem;
+  z-index: 1;
+  border-radius: 5px;
+}
+.message h3, .message h1 {
+  padding: 1rem;
+}
+.message .normal {
+  font-weight: normal;
+}
+.message select, .message input {
+  margin-top: 2rem;
+  padding: 0.3rem;
+  font: inherit;
+}
+.message select {
+  width: 120px;
+}
+.message #start, .message #playAgain {
+  display: block;
+  margin: 0 auto;
+  margin-top: 2rem;
+  padding: 0.5rem 2rem;
+  border: 1px solid rgb(94, 92, 100);
+  color: rgb(94, 92, 100);
+  background-color: rgb(227, 234, 240);
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+.message #start:hover, .message #playAgain:hover {
+  cursor: pointer;
+  color: rgb(94, 92, 100);
+  background-color: rgb(202, 210, 218);
 }
